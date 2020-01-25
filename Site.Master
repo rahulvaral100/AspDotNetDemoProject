@@ -1,0 +1,211 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ComplaintResolverSystem.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <!--link href="~/Styles/Site.css" rel="stylesheet" type="text/css" /-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    
+    <style>
+        .fixed-nav-bar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 9999;
+          width: 100%;
+          height: 70px;
+          background-color: #ffff;
+        }
+
+        /* The element at the top of the page right after the fixed navigation bar
+           MUST have sufficient top margin or else it will be covered by the bar */
+        .content {
+          margin-top: 70px;
+          background-color: #F5F5F5;
+          margin-bottom:0px;
+        }
+
+        /* Example responsive navigation menu  */
+        .fixed-nav-bar li, .fixed-nav-bar a { 
+          height: 50px;
+          line-height: 50px;
+        }
+        .menu {
+          width: 90%;
+          max-width: 960px;
+          margin: 0 auto;
+          height: 70px;
+        }
+        .menu a, .menu a:visited {
+          color: #00000;
+        }
+        .menu a:hover, .menu a:target {
+          color: #19A0D3;
+          border-bottom:3px solid #02354B;
+        }
+        .menu-items {
+          display: inline-block;
+          float:right;
+        }
+        .sitename {
+          display: inline-block;
+          margin-right: 20px;
+          margin-left: 10px;
+          font-size:30px;
+          color:#00354a;
+        }
+        a.sitename, a:visited.sitename {
+          color: #00354a;
+        }
+        .menu-items li {
+          display: inline-block;
+          margin-right: 10px;
+          margin-left: 10px;
+        }
+        .menu-items a {
+          text-decoration: none;
+        }
+        .show, .hide {
+          display: none;
+          padding-left: 15px;
+          background-color: transparent;
+          background-repeat: no-repeat;
+          background-position: center left;
+          color: #dde1e2;
+        }
+        .show {
+          background-image: url(assets/down-arrow-icon.png);
+        }
+        .hide {
+          background-image: url(assets/up-arrow-icon.png);
+        }
+
+        @media only screen and (max-width: 800px) {
+          .menu { 
+            position: relative;
+            width: 100%;
+          }
+          .sitename {
+            position: absolute;
+            top: 0;
+            left: 15px;
+            margin-left: 0px;
+          }
+          .menu-items {
+            display: none; 
+            width: 100%;
+            margin-top: 70px;
+            background-color: #ffff;
+            color: #000000;
+          }
+          .menu-items li {
+            display: block;
+            text-align: center;
+          }
+          .show, .hide {  
+            position: absolute;
+            top: 0;
+            right: 15px;
+          }
+          .show {
+            display: inline-block;
+          }
+          .hide {
+            display: none;
+          }
+          #menu:target .show {
+            display: none;
+          }
+          #menu:target .hide, #menu:target .menu-items {
+            display: inline-block;
+          }
+        }
+
+        @media only screen and (max-width: 220px) {
+          .sitename, .show, .hide {
+            font-size: 14px;
+          }
+        }
+        /* WEB FONT */
+        @import url(http://fonts.googleapis.com/css?family=Signika:600|Varela+Round);
+
+        body {
+          font: normal 18px/22px "Varela Round", sans-serif;
+          background-color: #F5F5F5;
+          color: #2e2e2e;
+        }
+        
+        a:link, a:visited, a:hover, a:active {
+          text-decoration: none;
+        }
+
+        /* LAYOUT */
+        .fixed-nav-bar {
+          box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.6);
+        }
+
+        .content {
+          position: relative;
+          background: #F5F5F5;
+          background-size: cover;
+          margin-bottom: 0px;
+         }
+        .description, .some-related-articles {
+          width: 90%;
+          max-width: 960px;
+          margin: 0 auto;
+        }
+        .description {
+          padding-top: 10px;
+          min-height: 580px;
+          text-align: center;
+        }
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color: #02354B;
+          color: white;
+          text-align: center;
+          height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+  <nav class="fixed-nav-bar">
+  <div id="menu" class="menu">
+    <a class="sitename" href="">Your Project Name </a>
+    <!-- Example responsive navigation menu  -->
+    <a class="show" href="#menu">Menu</a><a class="hide" href="#hidemenu">Menu</a>
+    <ul class="menu-items">
+      <li><a href="home.aspx">Home</a></li>
+      <li><a href="registration.aspx">Registration</a></li>
+      <li><a href="aboutus.aspx">About Us</a></li>
+      <li><a href="contactus.aspx">Contact Us</a></li>
+      <li><a href="login.aspx"> Login </a></li>
+  </ul>
+  </div>
+</nav>
+
+    <section class="content">
+      <div class="description">
+         <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+      </div>
+    </section>
+
+   <div class="footer">
+        
+    </div>
+    </form>
+    <div class="footer">
+        <p>Footer</p>
+    </div>
+</body>
+</html>
